@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">pr22_individual_GorbatyukDenis</string>
+    <string name="app_name">PLib</string>
+    <string-array name="itemsoption">
+        <item>Change</item>
+        <item>Remove</item>
+        <item>Cancel</item>
+    </string-array>
 </resources>
