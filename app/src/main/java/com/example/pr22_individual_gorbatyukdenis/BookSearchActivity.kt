@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
@@ -15,11 +14,9 @@ import com.example.pr22_individual_gorbatyukdenis.adapter.BookAdapter
 import com.example.pr22_individual_gorbatyukdenis.data.AppDB
 import com.example.pr22_individual_gorbatyukdenis.data.entity.Book
 import com.example.pr22_individual_gorbatyukdenis.databinding.ActivityBookSearchBinding
-import com.example.pr22_individual_gorbatyukdenis.databinding.ActivityMainBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
 import org.json.JSONObject
 
 class BookSearchActivity : AppCompatActivity() {
@@ -38,8 +35,11 @@ class BookSearchActivity : AppCompatActivity() {
         setContentView(bindingClass.root)
         BookISBN = bindingClass.bookISBN
         GetInfoBTN = bindingClass.getBookInfoButton
-        GetInfoBTN.setOnClickListener() { GetBook(BookISBN.text.toString()) }
-        SaveInfoBTN.setOnClickListener() { SaveBook()}
+        SaveInfoBTN = bindingClass.saveBookInfoButton
+        db = AppDB.getInstance(applicationContext)
+
+        GetInfoBTN.setOnClickListener() { GetBook(BookISBN.text.toString().trim()) }
+        SaveInfoBTN.setOnClickListener() { SaveBook() }
     }
 
     fun GetBook(ISBN: String) {

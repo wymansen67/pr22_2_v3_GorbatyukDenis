@@ -6,50 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/bookInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/bookISBNLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825"
-        android:layout_marginBottom="40dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bookISBN"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:hint="Enter book ISBN"
-            android:background="@drawable/edit_text"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/getBookInfoButton"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:text="Get book info"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookISBNLayout"
-        app:layout_constraintVertical_bias="0.558"/>-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -61,10 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:contentDescription="Add"
         android:src="@android:drawable/ic_input_add"
         tools:layout_editor_absoluteX="150dp"
@@ -76,10 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="0dp"
         android:contentDescription="Add"
         android:src="@android:drawable/ic_menu_search"
         tools:layout_editor_absoluteX="150dp"

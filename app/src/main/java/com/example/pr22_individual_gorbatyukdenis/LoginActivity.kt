@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.example.pr22_individual_gorbatyukdenis.databinding.ActivityLoginBinding
-import com.example.pr22_individual_gorbatyukdenis.databinding.ActivityMainBinding
 
 class LoginActivity : AppCompatActivity() {
 

@@ -11,7 +11,7 @@ import com.example.pr22_individual_gorbatyukdenis.data.entity.Book
 abstract class AppDB: RoomDatabase() {
     abstract fun bookDao(): BookDAO
 
-    companion object{
+    companion object {
         private var instance: AppDB? = null
 
         fun getInstance(context: Context): AppDB{

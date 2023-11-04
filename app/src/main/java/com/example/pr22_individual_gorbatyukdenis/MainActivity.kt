@@ -5,32 +5,22 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.pr22_individual_gorbatyukdenis.adapter.BookAdapter
 import com.example.pr22_individual_gorbatyukdenis.data.AppDB
 import com.example.pr22_individual_gorbatyukdenis.data.entity.Book
 import com.example.pr22_individual_gorbatyukdenis.databinding.ActivityMainBinding
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
-import org.json.JSONObject
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bindingClass: ActivityMainBinding
     private lateinit var recyclerView: RecyclerView
-    private lateinit var fab: FloatingActionButton
+    private lateinit var fabAdd: FloatingActionButton
+    private lateinit var fabSrch: FloatingActionButton
     private var list = mutableListOf<Book>()
     private lateinit var adapter: BookAdapter
     private lateinit var db: AppDB
@@ -40,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
         recyclerView = findViewById(R.id.recycler_view)
-        fab = findViewById(R.id.fab)
+        fabAdd = bindingClass.fab
+        fabSrch = bindingClass.fabSearch
 
         db = AppDB.getInstance(applicationContext)
         adapter = BookAdapter(list)
@@ -74,8 +65,12 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
         recyclerView.addItemDecoration(DividerItemDecoration(applicationContext, RecyclerView.VERTICAL))
 
-        fab.setOnClickListener {
+        fabAdd.setOnClickListener {
             startActivity(Intent(this, EditorActivity::class.java))
+        }
+
+        fabSrch.setOnClickListener {
+            startActivity(Intent(this, BookSearchActivity::class.java))
         }
     }
 
