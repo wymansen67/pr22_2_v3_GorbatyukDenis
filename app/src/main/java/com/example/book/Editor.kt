@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class Editor : AppCompatActivity() {
 
@@ -43,49 +44,77 @@ class Editor : AppCompatActivity() {
 
         bttnSave.setOnClickListener {
             if (Title.text.isNotEmpty() && Author.text.isNotEmpty() && PublishDate.text.isNotEmpty() && Publisher.text.isNotEmpty()) {
-                //if ()
-                if (intent != null) {
-                    database.bookDao().update(
-                        Book(
-                            intent.getInt("id", 0),
-                            Title.text.toString(),
-                            Author.text.toString(),
-                            PublishDate.text.toString(),
-                            Publisher.text.toString()
-                        )
-                    )
+                if (!Title.text.contains("-_?/\\|*&^;=+%$#@!<>'\"[]{}~`")) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Наименование книги имеет недопустимые символы",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (!Author.text.contains("-_?/\\|*&^:;=+%$#@!<>'\"[]{}~`")) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Автор имеет недопустимые символы",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (!PublishDate.text.contains("-_?/\\|*&^:;=+%$#@!<>'\"[]{}~`")) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Дата публикации имеет недопустимые символы",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (!Publisher.text.contains("-_?/\\|*&^:;=+%$#@!<>'\"[]{}~`")) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Издатель имеет недопустимые символы",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    list.clear()
-                    list.addAll(
-                        database.bookDao()
-                            .search(Title.text.toString())
-                    )
-                    adapter = BookAdapter(list)
-
-                    if (adapter.itemCount == 0) {
-                        database.bookDao().insertAll(
+                    if (intent != null) {
+                        database.bookDao().update(
                             Book(
-                                null,
+                                intent.getInt("id", 0),
                                 Title.text.toString(),
                                 Author.text.toString(),
                                 PublishDate.text.toString(),
-                                Publisher.text.toString(),
+                                Publisher.text.toString()
                             )
                         )
                     } else {
-                        database.bookDao().delete(list[0])
-                        database.bookDao().insertAll(
-                            Book(
-                                null,
-                                Title.text.toString(),
-                                Author.text.toString(),
-                                PublishDate.text.toString(),
-                                Publisher.text.toString(),
-                            )
+                        list.clear()
+                        list.addAll(
+                            database.bookDao()
+                                .search(Title.text.toString())
                         )
+                        adapter = BookAdapter(list)
+
+                        if (adapter.itemCount == 0) {
+                            database.bookDao().insertAll(
+                                Book(
+                                    null,
+                                    Title.text.toString(),
+                                    Author.text.toString(),
+                                    PublishDate.text.toString(),
+                                    Publisher.text.toString(),
+                                )
+                            )
+                        } else {
+                            database.bookDao().delete(list[0])
+                            database.bookDao().insertAll(
+                                Book(
+                                    null,
+                                    Title.text.toString(),
+                                    Author.text.toString(),
+                                    PublishDate.text.toString(),
+                                    Publisher.text.toString(),
+                                )
+                            )
+                        }
                     }
+                    finish()
                 }
-                finish()
+            } else {
+                Toast.makeText(applicationContext, "Поля не могут быть пустыми", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
