@@ -11,9 +11,6 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.book.BookAdapter
-import com.example.book.AppDatabase
-import com.example.book.Book
 import com.example.book.databinding.ActivitySearchBookBinding
 import com.google.android.material.snackbar.Snackbar
 import org.json.JSONObject
@@ -21,9 +18,9 @@ import org.json.JSONObject
 class SearchBook : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBookBinding
-    private lateinit var tvTitle: TextView
-    private lateinit var tvAuthor: TextView
-    private lateinit var tvPublishDate: TextView
+    private lateinit var Title: TextView
+    private lateinit var Author: TextView
+    private lateinit var PublishDate: TextView
     private lateinit var tvPublisher: TextView
     private lateinit var database: AppDatabase
     private var list = mutableListOf<Book>()
@@ -34,43 +31,42 @@ class SearchBook : AppCompatActivity() {
         binding = ActivitySearchBookBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        tvTitle = binding.textViewTitle
-        tvAuthor = binding.textViewAuthor
-        tvPublishDate = binding.textViewPublishDate
-        tvPublisher = binding.textViewPublisher
+        Title = binding.title
+        Author = binding.author
+        PublishDate = binding.publishDate
+        tvPublisher = binding.publisher
         database = AppDatabase.getInstance(applicationContext)
 
-        binding.buttonSearch.setOnClickListener {
+        binding.getBookInfoButton.setOnClickListener {
 
-            if (binding.editTextTitle.text.toString().isNotEmpty()) {
-                getBook(binding.editTextTitle.text.toString())
+            if (binding.bookISBN.text.toString().trim().isNotEmpty()) {
+                getBook(binding.bookISBN.text.toString().trim())
             } else {
-                binding.gridlayout.visibility = GONE
-                binding.buttonSave.visibility = GONE
-                Toast.makeText(this, "emptyfield", Toast.LENGTH_SHORT).show()
+                binding.saveBookInfoButton.visibility = GONE
+                Toast.makeText(this, "Empty field", Toast.LENGTH_SHORT).show()
             }
-            if (tvTitle.text.toString().isNotEmpty()) {
-                binding.gridlayout.visibility = VISIBLE
-                binding.buttonSave.visibility = VISIBLE
+
+            if (Title.text.toString().isNotEmpty()) {
+                binding.getBookInfoButton.visibility = GONE
+                binding.saveBookInfoButton.visibility = VISIBLE
             } else {
-                binding.gridlayout.visibility = GONE
-                binding.buttonSave.visibility = GONE
-                Toast.makeText(this, "notfound", Toast.LENGTH_SHORT).show()
+                binding.saveBookInfoButton.visibility = GONE
+                Toast.makeText(this, "Book not found", Toast.LENGTH_SHORT).show()
             }
         }
 
-        binding.buttonSave.setOnClickListener {
+        binding.saveBookInfoButton.setOnClickListener {
                 list.clear()
-                list.addAll(database.bookDao().search(binding.editTextTitle.text.toString()))
+                list.addAll(database.bookDao().search(Title.text.toString()))
                 adapter = BookAdapter(list)
 
                 if (adapter.itemCount == 0) {
                     database.bookDao().insertAll(
                         Book(
                             null,
-                            binding.editTextTitle.text.toString(),
-                            tvAuthor.text.toString(),
-                            tvPublishDate.text.toString(),
+                            Title.text.toString(),
+                            Author.text.toString(),
+                            PublishDate.text.toString(),
                             tvPublisher.text.toString()
                         )
                     )
@@ -79,16 +75,14 @@ class SearchBook : AppCompatActivity() {
                     database.bookDao().insertAll(
                         Book(
                             null,
-                            binding.editTextTitle.text.toString(),
-                            tvAuthor.text.toString(),
-                            tvPublishDate.text.toString(),
+                            Title.text.toString(),
+                            Author.text.toString(),
+                            PublishDate.text.toString(),
                             tvPublisher.text.toString(),
                         )
                     )
                 }
 
-                binding.gridlayout.visibility = GONE
-                binding.buttonSave.visibility = GONE
                 startActivity(Intent(this@SearchBook, MainActivity::class.java))
         }
     }
@@ -136,10 +130,10 @@ class SearchBook : AppCompatActivity() {
                             { response ->
                                 val jsonObject1 = JSONObject(response)
                                 val name = jsonObject1.getString("personal_name")
-                                binding.textViewTitle.text = "$title"
-                                binding.textViewAuthor.text = "$name"
-                                binding.textViewPublishDate.text = "$publish_date"
-                                binding.textViewPublisher.text = "$publisher"
+                                binding.title.text = "$title"
+                                binding.author.text = "$name"
+                                binding.publishDate.text = "$publish_date"
+                                binding.publisher.text = "$publisher"
 
                             }, {
                                 Log.d("MyLog", "Volley error: $it")

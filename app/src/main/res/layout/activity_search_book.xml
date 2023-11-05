@@ -6,137 +6,185 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="190dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
+        android:text="Book info:"
+        app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.342" />
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTextTitle"
-            android:layout_width="225dp"
-            android:layout_height="50dp"
-            android:layout_gravity="top"
-            android:ems="10"
-            android:hint="КОД"
-            android:paddingLeft="10dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonSearch"
-            android:layout_width="125dp"
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginLeft="5dp"
-            android:text="Search"
-            android:textAllCaps="false"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            android:text="Title:"
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.41" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.244"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.49"
+            android:layout_marginStart="5dp"/>
 
     </LinearLayout>
 
-    <GridLayout
-        android:id="@+id/gridlayout"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:visibility="gone">
+        android:orientation="horizontal">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="Title:"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
             android:text="Author:"
-            android:textSize="20dp" />
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.492" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="2"
-            android:layout_column="0"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="Publish Date:"
-            android:textSize="20dp" />
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.244"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.41"
+            android:layout_marginStart="5dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="0"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="Publisher:"
-            android:textSize="20dp" />
+    </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textViewAuthor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textViewPublishDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="2"
-            android:layout_column="1"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textViewPublisher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="1"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp" />
-
-    </GridLayout>
-
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publish date:"
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.569" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/publish_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.313"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.569"
+            android:layout_marginStart="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publisher:"
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.649" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toTopOf="@+id/bookISBNLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.647"
+            android:layout_marginStart="5dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:text="Save"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:id="@+id/bookISBNLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="200dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bookISBN"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter book ISBN"
+            android:background="@drawable/edit_text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_gravity="center"
+        android:id="@+id/getBookInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Get book info"
+        android:visibility="visible"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_gravity="center"
+        android:id="@+id/saveBookInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Save book"
+        android:visibility="gone"/>
 
 </LinearLayout>

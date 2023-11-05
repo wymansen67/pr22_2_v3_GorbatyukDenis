@@ -27,13 +27,13 @@ class Authorization : AppCompatActivity() {
 
         shPref = getPreferences(MODE_PRIVATE)
 
-        username = binding.editTextTextPersonName
-        password = binding.editTextTextPassword
+        username = binding.login
+        password = binding.psswd
 
         username.setText(shPref.getString("username", "").toString())
         password.setText(shPref.getString("password", "").toString())
 
-        binding.buttonSignIn.setOnClickListener {
+        binding.auth.setOnClickListener {
 
             if (username.text.toString().isNotEmpty() && password.text.toString().isNotEmpty()) {
 
@@ -53,7 +53,7 @@ class Authorization : AppCompatActivity() {
                         startActivity(
                             Intent(
                                 this@Authorization,
-                                SearchBook::class.java
+                                MainActivity::class.java
                             )
                         )
                         finish()
@@ -79,7 +79,7 @@ class Authorization : AppCompatActivity() {
                     startActivity(
                         Intent(
                             this@Authorization,
-                            SearchBook::class.java
+                            MainActivity::class.java
                         )
                     )
                     finish()

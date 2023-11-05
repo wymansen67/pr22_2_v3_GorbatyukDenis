@@ -22,9 +22,9 @@ class Editor : AppCompatActivity() {
 
         Title = findViewById(R.id.title)
         Author = findViewById(R.id.author)
-        PublishDate = findViewById(R.id.publish_date)
+        PublishDate = findViewById(R.id.publishDate)
         Publisher = findViewById(R.id.publisher)
-        bttnSave = findViewById(R.id.bttn_save)
+        bttnSave = findViewById(R.id.btn_save)
         database = AppDatabase.getInstance(applicationContext)
 
         val intent = intent.extras
@@ -43,50 +43,50 @@ class Editor : AppCompatActivity() {
 
         bttnSave.setOnClickListener {
             if (Title.text.isNotEmpty() && Author.text.isNotEmpty() && PublishDate.text.isNotEmpty() && Publisher.text.isNotEmpty()) {
+                //if ()
+                if (intent != null) {
+                    database.bookDao().update(
+                        Book(
+                            intent.getInt("id", 0),
+                            Title.text.toString(),
+                            Author.text.toString(),
+                            PublishDate.text.toString(),
+                            Publisher.text.toString()
+                        )
+                    )
+                } else {
+                    list.clear()
+                    list.addAll(
+                        database.bookDao()
+                            .search(Title.text.toString())
+                    )
+                    adapter = BookAdapter(list)
 
-                        if (intent != null) {
-                            database.bookDao().update(
-                                Book(
-                                    intent.getInt("id", 0),
-                                    Title.text.toString(),
-                                    Author.text.toString(),
-                                    PublishDate.text.toString(),
-                                    Publisher.text.toString()
-                                )
+                    if (adapter.itemCount == 0) {
+                        database.bookDao().insertAll(
+                            Book(
+                                null,
+                                Title.text.toString(),
+                                Author.text.toString(),
+                                PublishDate.text.toString(),
+                                Publisher.text.toString(),
                             )
-                        } else {
-                            list.clear()
-                            list.addAll(
-                                database.bookDao()
-                                    .search(Title.text.toString())
+                        )
+                    } else {
+                        database.bookDao().delete(list[0])
+                        database.bookDao().insertAll(
+                            Book(
+                                null,
+                                Title.text.toString(),
+                                Author.text.toString(),
+                                PublishDate.text.toString(),
+                                Publisher.text.toString(),
                             )
-                            adapter = BookAdapter(list)
-
-                            if (adapter.itemCount == 0) {
-                                database.bookDao().insertAll(
-                                    Book(
-                                        null,
-                                        Title.text.toString(),
-                                        Author.text.toString(),
-                                        PublishDate.text.toString(),
-                                        Publisher.text.toString(),
-                                    )
-                                )
-                            } else {
-                                database.bookDao().delete(list[0])
-                                database.bookDao().insertAll(
-                                    Book(
-                                        null,
-                                        Title.text.toString(),
-                                        Author.text.toString(),
-                                        PublishDate.text.toString(),
-                                        Publisher.text.toString(),
-                                    )
-                                )
-                            }
-                        }
-                        finish()
+                        )
                     }
+                }
+                finish()
+            }
         }
     }
 }

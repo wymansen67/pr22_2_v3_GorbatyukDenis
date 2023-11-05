@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var fab: FloatingActionButton
+    private lateinit var fabSrch: FloatingActionButton
     private var list = mutableListOf<Book>()
     private lateinit var adapter: BookAdapter
     private lateinit var database: AppDatabase
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         recyclerView = findViewById(R.id.recycler_view)
         fab = findViewById(R.id.fab)
+        fabSrch = findViewById(R.id.fabSearch)
 
         database = AppDatabase.getInstance(applicationContext)
         adapter = BookAdapter(list)
@@ -68,6 +70,10 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener {
             startActivity(Intent(this, Editor::class.java))
+        }
+
+        fabSrch.setOnClickListener{
+            startActivity(Intent(this, SearchBook::class.java))
         }
     }
 

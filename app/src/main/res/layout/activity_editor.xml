@@ -10,60 +10,65 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp">
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="200dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title" />
+            android:hint="Book title "
+            android:background="@drawable/edit_text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp">
+        android:layout_marginBottom="15dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Author" />
+            android:hint="Author"
+            android:background="@drawable/edit_text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp">
+        android:layout_marginBottom="15dp">
 
-        <EditText
-            android:id="@+id/publish_date"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/publishDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Publish Date" />
+            android:hint="Publish date"
+            android:background="@drawable/edit_text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp">
+        android:layout_marginBottom="15dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/publisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Publisher" />
+            android:hint="Publisher"
+            android:background="@drawable/edit_text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <Button
-        android:id="@+id/bttn_save"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Save"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">book</string>
+    <string name="app_name">Plib</string>
     <string-array name="itemsoption">
         <item>Change</item>
         <item>Remove</item>
