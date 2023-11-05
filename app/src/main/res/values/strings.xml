@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">book</string>
+    <string-array name="itemsoption">
+        <item>Change</item>
+        <item>Remove</item>
+        <item>Сancel</item>
+    </string-array>
+</resources>
